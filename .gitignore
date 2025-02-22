@@ -1,2 +1,6 @@
 # config
-config/
+config
+
+.cache
+**/__pycache__
+.coverage
