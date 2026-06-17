@@ -9,7 +9,14 @@ console = Console()
 class PlaylistJSONParser(JSONResponseParser):
     def parse_response(self, response_text: str) -> PlaylistData | None:
         try:
-            data = json.loads(response_text.strip())
+            # Strip markdown code fences if present
+            text = response_text.strip()
+            if text.startswith("```"):
+                text = text.split("```", 2)[1]
+                if text.startswith("json"):
+                    text = text[4:]
+                text = text.rsplit("```", 1)[0].strip()
+            data = json.loads(text)
             # Basic validation of required fields
             if not all(
                 key in data for key in ["playlist_name", "description", "tracks"]

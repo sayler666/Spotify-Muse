@@ -11,14 +11,17 @@ console = Console()
 class AnthropicProvider(AIProvider):
     BASE_URL = "https://api.anthropic.com/v1/messages"
     API_VERSION = "2023-06-01"
-    MAX_TOKENS = 1024
-    DEFAULT_TIMEOUT = 30
+    MAX_TOKENS = 4096
+    DEFAULT_TIMEOUT = 60
     MIN_PROMPT_LENGTH = 10
-    MAX_PROMPT_LENGTH = 300
+    MAX_PROMPT_LENGTH = 500
 
     def __init__(self, api_key: str) -> None:
         self.api_key = api_key
         self._available_models = [
+            "claude-haiku-4-5-20251001",
+            "claude-sonnet-4-6",
+            "claude-opus-4-8",
             "claude-3-haiku-20240307",
             "claude-3-opus-20240229",
             "claude-3-sonnet-20240229",
