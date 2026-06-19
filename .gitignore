@@ -1,2 +1,18 @@
 # config
-config/
+config
+
+.cache
+**/__pycache__
+.coverage
+.vscode
+
+# Poetry
+dist/
+*.egg-info/
+
+# pyenv
+.python-version
+
+# virtual enviroment
+.env
+.venv/
